@@ -77,3 +77,30 @@ Output Example 3:
 =================================================
 
 """
+#Write your code below this line
+
+def safe_get(items, index):
+    try:
+        return ("ok", items[index])
+
+    except IndexError:
+        return ("error", "Index out of range")
+
+    except TypeError:
+        return ("error", "Index must be an int")
+
+    except Exception as e:
+        return ("error", "Unexpected error: " + str(e))
+
+
+# Input from user
+items = list(map(int, input("Enter list elements separated by space: ").split()))
+
+index = input("Enter index: ")
+
+try:
+    index = int(index)
+except ValueError:
+    pass
+
+print(safe_get(items, index))
